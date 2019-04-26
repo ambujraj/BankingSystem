@@ -13,7 +13,7 @@ class Invalid extends Exception{
 class Account{
 public static String name="Jack";
 public static int account;
-public static String pass;
+public static char pass [];
 }
 
 class Main{
@@ -34,9 +34,14 @@ System.out.println("Invalid Credentials.");
 System.exit(0);
 }
 }
-System.out.print("Enter the password:\t");
-Account.pass = sc.next();
-if(Account.pass.equals("123") && Account.account==11703203){
+Console console = System.console();
+if(console==null){
+    System.out.println("Error.");
+    System.exit(0);
+}
+
+Account.pass = console.readPassword("Enter the password:\t");
+if(new String(Account.pass).equals("123") && Account.account==11703203){
     System.out.println("Success.");
 }
 else{
